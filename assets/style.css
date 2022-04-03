@@ -32,3 +32,25 @@
     height:1rem;
     margin:auto auto;
 }
+
+#keyboard-wrapper{
+    margin:auto auto;
+    align-items: center;
+    padding-bottom:0.5rem;
+}
+.keyboard{
+    text-align: center;
+    margin:0.5rem;
+}
+.keyboard button {
+    height:1.875rem;
+    width:1.4rem;
+    padding: 2px;    
+}
+#backspace{
+    width:1.8rem;
+    text-align: center;
+}
+#enter {
+    width:auto;
+}
