@@ -2,9 +2,6 @@ let selectedIndex = 0;
 let guesses = 1;
 let guessedWord ="";
 let guessedLetters =[];
-let letters = []
-
-letters = document.getElementsByClassName("letter");
 
 function performAddLetter(guessNumber, letter) {
     let indexes = document.getElementById(guessNumber).children;
@@ -43,9 +40,9 @@ function addLetter(evnt) {
 
 
 }
-for (let i = 0; i < letters.length; i++){
-    letters[i].addEventListener('click', addLetter)
-}
-// for (let letter of letters){
-//     letter.addEventListener("click", addLetter(letter.textContent))
-//     console.log(letter.textContent)
+//loads click function onto every button on the keyboard
+letters = document.getElementsByClassName("letter"); 
+for (let letter of letters){
+    letter.addEventListener('click', addLetter)
+};
+
