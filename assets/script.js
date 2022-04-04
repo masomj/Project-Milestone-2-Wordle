@@ -26,17 +26,17 @@ function checkAnswer(){
         incorrectWord();
     }
 }
-
+//Calls the function to change the index color
 function correctWord(){
     console.log('You Won');
     changeColor("correct")
 }
-
+//Calls the function to change the index color
 function incorrectWord(){
-    console.log('You Lost');
     changeColor("incorrect")
+    guesses++;
 }
-
+//change the index color to green for correct place or yellow for contained in the word but not correct index
 function changeColor(result){
     let indexes = document.getElementById(`Guess${guesses}`).children;
     if (result === 'correct'){
