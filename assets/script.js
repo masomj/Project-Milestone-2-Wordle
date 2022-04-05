@@ -70,7 +70,6 @@ function performAddLetter(guessNumber, letter) {
 //removes letter from letters array, guessed word string and the last selected index on the GUI
 function performBackspace(guessNumber) {
     let indexes = document.getElementById(guessNumber).children
-    
     guessedWord.slice(0, -1);
     guessedLetters.pop();
     indexes[selectedIndex].innerHTML = " ";
@@ -78,8 +77,6 @@ function performBackspace(guessNumber) {
 
 //calls the function to remove the selected index from UI and array, depending on guess number
 function backspace() {
-    
-    
     if (selectedIndex > 0) {
         selectedIndex--;
     }
@@ -107,7 +104,7 @@ function backspace() {
 //calls the addLetter function on the correct guess row
 function addLetter(evnt) {
     let letter = evnt.target.textContent;
-    if (selectedIndex <= 5) {
+    if (selectedIndex < 5) {
         switch (guesses) {
             case 1:
                 performAddLetter("Guess1", letter);
