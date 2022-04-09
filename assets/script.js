@@ -12991,21 +12991,42 @@ function onDocLoad() {
     word = selectWord(validWords);
     console.log(word);
 }
+function addShake(){
+    let indexes = document.getElementById(`Guess${guesses}`).children;
+    for( let i = 0 ; i < 5 ; i++){
+        indexes[i].classList.add('shake');
+    }
+}
+
+function removeShake(){
+    let indexes = document.getElementById(`Guess${guesses}`).children;
+    for( let i = 0 ; i < 5 ; i++){
+        indexes[i].classList.remove('shake');
+    }
+
+}
+//to notify user when an invalid word is input
 function invalidWord(){
-    console.log('This word is invalid')
+    console.log('This word is invalid');
+    addShake()
+    setTimeout(function() {
+        removeShake();
+    }, 500);
+    
 }
 //Calls the relevant function
 function checkAnswer() {
-
+    
     let allWords = validWords.concat(fiveLetterWordList)
-   
     if (allWords.includes(guessedWord.toLowerCase())){
         if (guessedWord === word) {
             correctWord();
         } else if (guessedWord != word) {
-            incorrectWord();
-    }   
-    }}
+            incorrectWord();}
+    }else {
+        invalidWord();
+    }
+    }
 //Calls the function to change the index color
 function correctWord() {
     console.log('You Won');
