@@ -4,10 +4,6 @@ let guessedWord = ""; //the user input word
 let guessedLetters = []; //used to iterate
 let word = ""; //The word to guess
 
-var fs = require('fs');
-var text = fs.readFileSync("./mytext.txt", 'utf-8');
-var textByLine = text.split('\n')
-
 const wordList = ['aahed', 'stays', 'hello', 'words', 'sword', 'clone', 'those', 'slave', 'stool', 'bytes', 'silly', 'spore', 'shore', 'index', 'style', 'creed', 'trust', 'tryst', 'scare', 'share', 'where', 'splay'];
 
 //get random word
