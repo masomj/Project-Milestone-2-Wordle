@@ -12996,15 +12996,16 @@ function invalidWord(){
 }
 //Calls the relevant function
 function checkAnswer() {
-    if (fiveLetterWordList.includes(guessedWord.toLowerCase)){
-    if (guessedWord === word) {
-        correctWord();
-    } else if (guessedWord != word) {
-        incorrectWord();
-    }}else {
-        invalidWord();
-    }
-}
+
+    let allWords = validWords.concat(fiveLetterWordList)
+   
+    if (allWords.includes(guessedWord.toLowerCase())){
+        if (guessedWord === word) {
+            correctWord();
+        } else if (guessedWord != word) {
+            incorrectWord();
+    }   
+    }}
 //Calls the function to change the index color
 function correctWord() {
     console.log('You Won');
