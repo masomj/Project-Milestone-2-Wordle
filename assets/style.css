@@ -9,7 +9,10 @@
     justify-content: center;
     text-align: center;
 }
-
+#title{
+    align-items: center;
+    
+}
 .guess-wrapper > div {
     padding-bottom: 1rem;
     margin:auto auto;
