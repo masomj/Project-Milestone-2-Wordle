@@ -12991,42 +12991,75 @@ function onDocLoad() {
     word = selectWord(validWords);
     console.log(word);
 }
+//shakes the selected guess
 function addShake(){
     let indexes = document.getElementById(`Guess${guesses}`).children;
     for( let i = 0 ; i < 5 ; i++){
         indexes[i].classList.add('shake');
     }
 }
-
-function removeShake(){
+//removes shake class so it can be shaken again
+function removeShake(){ 
     let indexes = document.getElementById(`Guess${guesses}`).children;
     for( let i = 0 ; i < 5 ; i++){
-        indexes[i].classList.remove('shake');
+        indexes[i].removeAttribute('class');
     }
 
 }
+//changes color of keyboard button
+function alreadySelectedLetter(letter, color){
+    let letters = document.getElementsByClassName('letter')
+    
+    for (let i =0 ; i < letters.length; i++){
+        console.log(letters[i].innerHTML)
+        if (color ==='green'){
+            if (letters[i].textContent === letter){
+                letters[i].style.backgroundColor = "green";
+            }
+        } else if (color === 'yellow'){
+            if (letters[i].textContent === letter){
+                letters[i].style.backgroundColor  = "yellow";
+            }
+        } else if (color === 'gray'){
+            if (letters[i].textContent === letter){
+                letters[i].style.backgroundColor = "gray";
+            }
+        }
+    }
+}
+      
 //to notify user when an invalid word is input
 function invalidWord(){
     console.log('This word is invalid');
     addShake()
-    setTimeout(function() {
+    // waits 0.5s for animation to finish. 
+    // Code from https://stackoverflow.com/questions/25221243/how-can-i-make-my-javascript-wait-0-5-seconds-before-running-the-next-statement
+    setTimeout(function() {             
         removeShake();
-    }, 500);
+    }, 500); 
     
 }
-//Calls the relevant function
+//Calls the relevant function depening on answer
 function checkAnswer() {
+    let allWords = validWords.concat(fiveLetterWordList);
+    console.log(allWords.length);
+    let lowerCaseWord = guessedWord.toLowerCase();
+    console.log(lowerCaseWord)
     
-    let allWords = validWords.concat(fiveLetterWordList)
-    if (allWords.includes(guessedWord.toLowerCase())){
+    if (allWords.includes(lowerCaseWord)){
         if (guessedWord === word) {
             correctWord();
+            clearVariables()
         } else if (guessedWord != word) {
-            incorrectWord();}
+            incorrectWord();
+            clearVariables()
+        }
     }else {
         invalidWord();
+        
     }
-    }
+}
+
 //Calls the function to change the index color
 function correctWord() {
     console.log('You Won');
@@ -13050,13 +13083,18 @@ function changeColor(result) {
     if (result === 'correct') {
         for (let i = 0; i < 5; i++) {
             indexes[i].style.backgroundColor = 'green';
+            alreadySelectedLetter(indexes[i],'green')
         }
     } else if (result === 'incorrect') {
         for (let i = 0; i < 5; i++) {
             if (guessedLetters[i] === word[i]) {
                 indexes[i].style.backgroundColor = 'green';
+                alreadySelectedLetter(indexes[i],'green');
             } else if (word.includes(guessedLetters[i])) {
                 indexes[i].style.backgroundColor = 'yellow';
+                alreadySelectedLetter(indexes[i],'yellow');
+            } else {
+                alreadySelectedLetter(indexes[i], 'grey');
             }
         }
     }
@@ -13071,14 +13109,17 @@ function performAddLetter(guessNumber, letter) {
 //removes letter from letters array, guessed word string and the last selected index on the GUI
 function performBackspace(guessNumber) {
     let indexes = document.getElementById(guessNumber).children
-    guessedWord.slice(0, -1);
+    console.log(indexes)
+    console.log(selectedIndex)
+    guessedWord = guessedWord.slice(0, -1);
     guessedLetters.pop();
-    indexes[selectedIndex].innerHTML = " ";
+    indexes[selectedIndex].innerHTML = ` `;
+    
 }
 
 //calls the function to remove the selected index from UI and array, depending on guess number
 function backspace() {
-    if (selectedIndex > 0) {
+    if (selectedIndex > 0){        
         selectedIndex--;
     }
     switch (guesses) {
