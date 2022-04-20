@@ -13060,16 +13060,35 @@ function checkAnswer() {
     }
 }
 
+//removes the event listeners to prevent clicking after endgame popup
+function removeListeners(){
+
+backspaceBtn.removeEventListener('click',backspace);
+for (let letter of letters) {
+    letter.removeEventListener('click', addLetter);
+};
+enter.removeEventListener('click', checkAnswer);
+
+}
+//edits the popup wrapper under the win conditions
 function winningPopUp(){
+    popupContent('correct')
     let popupWrapper = document.getElementById("popup-wrapper");
-    popupWrapper.style.display ="block";
-    popupWrapper.classList.add('popup-wrapper')
+    popupWrapper.classList.remove('hide-popup');
+    popupWrapper.classList.add('popup-wrapper');
     let playAgainBtn = document.getElementById("action-1");
     let main = document.getElementById('main-game');
     main.classList.add('blur');
     playAgainBtn.addEventListener('click', () => {
         location.reload();
-    })
+    });
+    removeListeners();
+    p
+}
+
+//changes the text content of the popup depending on win or lose
+function popupContent(result){
+    
 }
 
 //Calls the function to change the index color
@@ -13196,9 +13215,11 @@ letters = document.getElementsByClassName("letter");
 for (let letter of letters) {
     letter.addEventListener('click', addLetter)
 };
-//calls the game load function on dom load
-document.addEventListener('DOMContentLoaded', onDocLoad, false)
+
 
 //Loads enter function onto the enter button on Keyboard
 let enter = document.getElementById("enter");
 enter.addEventListener('click', checkAnswer);
+
+//calls the game load function on dom load
+document.addEventListener('DOMContentLoaded', onDocLoad, false)
