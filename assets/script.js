@@ -12982,14 +12982,14 @@ const validWords = ["cigar"
 ,"fanny"]
 //get random word
 function selectWord(validWords) {
-    let i = Math.floor(Math.random() * validWords.length)
-    console.log[i]
+    let i = Math.floor(Math.random() * validWords.length);
+    
     return validWords[i].toUpperCase();
 }
 //to set up the game on start up
 function onDocLoad() {
     word = selectWord(validWords);
-    console.log(word);
+    
 }
 //shakes the selected guess
 function addShake(){
@@ -13011,7 +13011,7 @@ function alreadySelectedLetter(letter, color){
     let letters = document.getElementsByClassName('letter')
     
     for (let i =0 ; i < letters.length; i++){
-        console.log(letters[i].innerHTML)
+        
         if (color ==='green'){
             if (letters[i].textContent === letter){
                 letters[i].style.backgroundColor = "green";
@@ -13030,7 +13030,7 @@ function alreadySelectedLetter(letter, color){
       
 //to notify user when an invalid word is input
 function invalidWord(){
-    console.log('This word is invalid');
+    alert('Invalid Word');
     addShake()
     // waits 0.5s for animation to finish. 
     // Code from https://stackoverflow.com/questions/25221243/how-can-i-make-my-javascript-wait-0-5-seconds-before-running-the-next-statement
@@ -13102,7 +13102,7 @@ function popupContent(result){
 
 //Calls the function to change the index color
 function correctWord() {
-    console.log('You Won');
+    
     changeColor("correct")
     resultPopUp('correct');
 }
@@ -13150,9 +13150,7 @@ function performAddLetter(guessNumber, letter) {
 };
 //removes letter from letters array, guessed word string and the last selected index on the GUI
 function performBackspace(guessNumber) {
-    let indexes = document.getElementById(guessNumber).children
-    console.log(indexes)
-    console.log(selectedIndex)
+    let indexes = document.getElementById(guessNumber).children;
     guessedWord = guessedWord.slice(0, -1);
     guessedLetters.pop();
     indexes[selectedIndex].innerHTML = ` `;
@@ -13208,8 +13206,8 @@ function addLetter(evnt) {
         }
     }
     if (selectedIndex < 5) {
-        selectedIndex++
-        console.log(selectedIndex)
+        selectedIndex++;
+        
     };
 
 
@@ -13217,13 +13215,13 @@ function addLetter(evnt) {
 
 //loads backspace function on the backspace button on keyboard 
 let backspaceBtn = document.getElementById('backspace');
-backspaceBtn.addEventListener('click', backspace)
+backspaceBtn.addEventListener('click', backspace);
 
 
 //loads click function onto every button on the keyboard
 letters = document.getElementsByClassName("letter");
 for (let letter of letters) {
-    letter.addEventListener('click', addLetter)
+    letter.addEventListener('click', addLetter);
 };
 
 
@@ -13232,4 +13230,4 @@ let enter = document.getElementById("enter");
 enter.addEventListener('click', checkAnswer);
 
 //calls the game load function on dom load
-document.addEventListener('DOMContentLoaded', onDocLoad, false)
+document.addEventListener('DOMContentLoaded', onDocLoad, false);
