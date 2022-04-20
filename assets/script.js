@@ -13042,10 +13042,8 @@ function invalidWord(){
 //Calls the relevant function depening on answer
 function checkAnswer() {
     let allWords = validWords.concat(fiveLetterWordList);
-    console.log(allWords.length);
     let lowerCaseWord = guessedWord.toLowerCase();
-    console.log(lowerCaseWord)
-    
+   if (guesses < 5){
     if (allWords.includes(lowerCaseWord)){
         if (guessedWord === word) {
             correctWord();
@@ -13057,22 +13055,21 @@ function checkAnswer() {
     }else {
         invalidWord();
         
+    }} else if (guesses >= 5){
+        resultPopUp('incorrect');
     }
 }
 
 //removes the event listeners to prevent clicking after endgame popup
 function removeListeners(){
-
 backspaceBtn.removeEventListener('click',backspace);
 for (let letter of letters) {
     letter.removeEventListener('click', addLetter);
 };
 enter.removeEventListener('click', checkAnswer);
-
 }
-//edits the popup wrapper under the win conditions
-function winningPopUp(){
-    popupContent('correct')
+//makes popup HTML visible to user 
+function displayPopup (){
     let popupWrapper = document.getElementById("popup-wrapper");
     popupWrapper.classList.remove('hide-popup');
     popupWrapper.classList.add('popup-wrapper');
@@ -13083,25 +13080,38 @@ function winningPopUp(){
         location.reload();
     });
     removeListeners();
-    p
+}
+//populates and displays popup at endgame
+function resultPopUp(result){
+    popupContent(result);
+    displayPopup();
 }
 
 //changes the text content of the popup depending on win or lose
 function popupContent(result){
-    
+    let heading = document.getElementById('popup-title');
+    let paragraph = document.getElementById('popup-text')
+    if (result === 'correct'){
+        heading.textContent = "Congrats! You Won";
+        paragraph.textContent = `The word was ${word}. It took you ${guesses} guess(es) to get it.`
+    } else if (result === 'incorrect'){
+        heading.textContent = "Comiserations, You Lost";
+        paragraph.textContent = `The word was ${word}. Would you like to try again?`
+    }
 }
 
 //Calls the function to change the index color
 function correctWord() {
     console.log('You Won');
     changeColor("correct")
-    winningPopUp();
+    resultPopUp('correct');
 }
 //Calls the function to change the index color
 function incorrectWord() {
     changeColor("incorrect")
     guesses++;
     clearVariables();
+
 }
 //used to reset the incrementation variables between guesses
 function clearVariables() {
@@ -13170,8 +13180,8 @@ function backspace() {
         case 5:
             performBackspace("Guess5");
             break;
-        default:
-            lostgame;
+        
+            
     }
 }
 

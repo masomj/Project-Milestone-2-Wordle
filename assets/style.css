@@ -32,12 +32,11 @@ body{
     display :inline;
 }
 
-#popup{
-    display:none
+.hide-popup{
+    display:none;
 }
 .popup-wrapper{
     width:15rem;
-    height: 2rem;
     background-color: white;
     border-radius: 0.5rem;
     padding:0.2rem;
@@ -45,7 +44,6 @@ body{
     position:relative;
     top:-6rem;
     margin:auto auto;
-    
 }
     
 .blur{
