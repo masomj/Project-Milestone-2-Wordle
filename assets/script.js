@@ -13060,10 +13060,23 @@ function checkAnswer() {
     }
 }
 
+function winningPopUp(){
+    let popupWrapper = document.getElementById("popup-wrapper");
+    popupWrapper.style.display ="block";
+    popupWrapper.classList.add('popup-wrapper')
+    let playAgainBtn = document.getElementById("action-1");
+    let main = document.getElementById('main-game');
+    main.classList.add('blur');
+    playAgainBtn.addEventListener('click', () => {
+        location.reload();
+    })
+}
+
 //Calls the function to change the index color
 function correctWord() {
     console.log('You Won');
     changeColor("correct")
+    winningPopUp();
 }
 //Calls the function to change the index color
 function incorrectWord() {
