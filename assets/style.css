@@ -1,6 +1,9 @@
 body{
     background-color: darkslategrey;
+    
 }
+
+
 
 .guess-wrapper{
     border-radius: 4px;
@@ -65,17 +68,18 @@ body{
 }
 
 #keyboard-wrapper{
+    width:100%;
     margin:auto auto;
-    align-items: center;
-    padding-bottom:0.5rem;
+    
+    border:1px solid black;
 }
 .keyboard{
     text-align: center;
-    margin:0.5rem;
+    margin:0.25rem;
 }
 .keyboard button {
-    height:1.875rem;
-    width:1.4rem;
+    height:2.7rem;
+    width:1.6rem;
     padding: 2px;
     border-radius: 2px;
     background-color: darkgrey;
@@ -105,3 +109,7 @@ body{
     90% { transform: translate(1px, 2px) rotate(0deg); }
     100% { transform: translate(1px, -2px) rotate(-1deg); }
   } /* https://www.w3schools.com/howto/howto_css_shake_image.asp*/
+
+  /*Media queries*/
+
+  /*Above 375 pixels*/
