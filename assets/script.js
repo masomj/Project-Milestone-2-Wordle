@@ -73,6 +73,7 @@ function invalidWord() {
 }
 //Calls the relevant function depening on answer
 function checkAnswer() {
+    console.log(guesses)
 	let allWords = validWords.concat(fiveLetterWordList);
 	let lowerCaseWord = guessedWord.toLowerCase();
 	if (guesses < 5) {
@@ -89,8 +90,9 @@ function checkAnswer() {
 
 		}
 	} else if (guesses >= 5) {
-		incorrectWord()
         changeColor('incorrect');
+		resultPopUp('incorrect')
+        
 	}
 }
 
