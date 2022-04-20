@@ -82,7 +82,8 @@ body{
     padding: 2px;
     border-radius: 2px;
     background-color: darkgrey;
-    border:2px darkgray solid;    
+    border:2px darkgray solid;
+    font-weight: 700;
 }
 
 #backspace{
@@ -111,4 +112,11 @@ body{
 
   /*Media queries*/
 
-  /*Above 375 pixels*/
+  /*above 320px, up to 375px*/
+  @media (min-width:321px){
+  .keyboard button {
+    height:3rem;
+    width:1.9rem;
+    
+}
+  }
