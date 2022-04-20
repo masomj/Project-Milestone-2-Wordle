@@ -89,7 +89,8 @@ function checkAnswer() {
 
 		}
 	} else if (guesses >= 5) {
-		resultPopUp('incorrect');
+		incorrectWord()
+        changeColor('incorrect');
 	}
 }
 
