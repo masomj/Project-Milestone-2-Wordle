@@ -21,6 +21,7 @@ function selectWord(validWords) {
 //to set up the game on start up
 function onDocLoad() {
 	word = selectWord(validWords);
+    
 
 }
 //shakes the selected guess
@@ -76,7 +77,7 @@ function checkAnswer() {
     console.log(guesses)
 	let allWords = validWords.concat(fiveLetterWordList);
 	let lowerCaseWord = guessedWord.toLowerCase();
-	if (guesses < 5) {
+	if (guesses <= 5) {
 		if (allWords.includes(lowerCaseWord)) {
 			if (guessedWord === word) {
 				correctWord();

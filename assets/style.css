@@ -56,7 +56,6 @@ body{
     left: 0;
     background: darkslategrey;
     opacity: 0.5;
-    filter: alpha(opacity = 50); /* required for opacity to work in IE */
 }
 
 .guesses div{
@@ -68,8 +67,11 @@ body{
 }
 
 #keyboard-wrapper{
-    width:100%;
     margin:auto auto;
+    width:100%;
+    position:fixed;
+    bottom:2rem;
+    border:1px solid black
 
 }
 .keyboard{
@@ -117,6 +119,6 @@ body{
   .keyboard button {
     height:3rem;
     width:1.9rem;
-    
+    }
 }
-  }
+
