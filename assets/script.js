@@ -171,7 +171,7 @@ function changeColor(result) {
 				alreadySelectedLetter(indexes[i], 'green');
 			} else if (word.includes(guessedLetters[i])) {
 				indexes[i].style.backgroundColor = 'yellow';
-				alreadySelectedLetter(indexes[i], 'yellow');
+				alreadySelectedLetter(indexes[i], 'orange');
 			} else {
 				alreadySelectedLetter(indexes[i], 'grey');
 			}
