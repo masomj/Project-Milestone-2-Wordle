@@ -2,7 +2,7 @@ let selectedIndex = 0; //used to track what box the user is inputting a letter t
 let guesses = 1;
 let guessedWord = ""; //the user input word
 let guessedLetters = []; //used to iterate through the word
-
+let letters =[] //used to store all keyboard letters
 
 //All allowed guesses
 const fiveLetterWordList = [
@@ -24,7 +24,7 @@ let word = selectWord(validWords); //The word to guess
 
 //to set up the game on start up
 function onDocLoad() {
-	addGameEventListeners;
+	addGameEventListeners();
 }
 //shakes the selected guess
 function addShake() {
@@ -262,21 +262,23 @@ function addLetter(evnt) {
 //calls the game load function on dom load
 document.addEventListener('DOMContentLoaded', onDocLoad, false);
 
+//Adds event listeners to the keyboard buttons
 function addGameEventListeners(){
-//loads backspace function on the backspace button on keyboard 
-let backspaceBtn = document.getElementById('backspace');
-backspaceBtn.addEventListener('click', backspace);
+	//loads backspace function on the backspace button on keyboard 
+	let backspaceBtn = document.getElementById('backspace');
+	backspaceBtn.addEventListener('click', backspace);
 
-//loads click function onto every button on the keyboard
-letters = document.getElementsByClassName("letter");
-for (let letter of letters) {
-	letter.addEventListener('click', addLetter);
+	//loads click function onto every button on the keyboard
+	letters = document.getElementsByClassName("letter");
+		for (let letter of letters) {
+			letter.addEventListener('click', addLetter);
+		}
+
+	//Loads enter function onto the enter button on Keyboard
+	let enter = document.getElementById("enter");
+	enter.addEventListener('click', checkAnswer);
 }
 
-//Loads enter function onto the enter button on Keyboard
-let enter = document.getElementById("enter");
-enter.addEventListener('click', checkAnswer);
-
-}
 //Exports for testing
-module.exports = { word, validWords, selectWord,}
+
+module.exports = { word, validWords, letters}

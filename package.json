@@ -7,5 +7,8 @@
   },
   "dependencies": {
     "jest-environment-jsdom": "^28.0.0"
-  }
+  },
+  "setupFiles": [
+    "./__mocks__/client.js"
+  ]
 }
