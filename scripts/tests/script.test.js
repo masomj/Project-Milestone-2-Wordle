@@ -3,9 +3,17 @@
  */
 
 
-
- const { word, validWords, letters } = require("../script");
  
+ beforeAll(() => {
+    let fs = require("fs");
+    let fileContents = fs.readFileSync("index.html", "utf-8");
+    document.open();
+    document.write(fileContents);
+    document.close()
+})
+
+const { word, validWords, addLetterEventListener,addBackspaceEventListener,addEnterEventListener } = require("../script");
+
  
 describe("Word is correctly selected", () => {
     
@@ -17,21 +25,28 @@ describe("Word is correctly selected", () => {
         expect(word.length).toBe(5);
      });
 });
+
+
 describe("Check game environment loads correctly", () => {
-    test('All Letters are on the dom', () => {
-        
-        document.addEventListener('DOMContentLoaded', () => {
-        
-        expect(letters.length).toEqual(26);
-        })    
+    test('All Letters are on the dom and event listener is correctly loaded', () => {
+            let letters = addLetterEventListener();
+            expect(letters.length).toEqual(26);
+          
         
     })
-    test('Backspace and enter buttons are on the dom', () => {
-        document.addEventListener('DOMContentLoaded', () => {
-            expect(backspaceBTN.length).toBe(1);
-            expect(enter.length).toBe(1);
-        })    
+    test('Backspace button is on the dom and favicon code from font awseome is present', () => {
+           let backspace = addBackspaceEventListener();
+            expect(backspace.innerHTML).toEqual(`<i class="fas fa-backspace"></i>`);
+
+            
+         
+    })
+    test('Enter button is on the dom and displays correct text', ()=>{
+        let enter = addEnterEventListener();
+        console.log(enter.innerHTML)
+        expect(enter.innerHTML).toEqual('Enter');
     })
 
 })
+
 

@@ -183,8 +183,6 @@ function changeColor(result) {
 			} else {
 				indexes[i].style.backgroundColor ='gray'
 				alreadySelectedLetter(guessedLetters[i], 'gray');
-
-				console.log(guessedLetters[i]);
 			}
 		}
 	}
@@ -265,20 +263,34 @@ document.addEventListener('DOMContentLoaded', onDocLoad, false);
 //Adds event listeners to the keyboard buttons
 function addGameEventListeners(){
 	//loads backspace function on the backspace button on keyboard 
-	let backspaceBtn = document.getElementById('backspace');
-	backspaceBtn.addEventListener('click', backspace);
+	let BTNbackspace = addBackspaceEventListener();
 
 	//loads click function onto every button on the keyboard
+	let letters = addLetterEventListener();
+
+	//Loads enter function onto the enter button on Keyboard
+	let enter = addEnterEventListener();
+}
+
+
+//Adds eventListenr to each letter and returns an array of the letters, this is to make the event listeners testable
+function addLetterEventListener(){
 	letters = document.getElementsByClassName("letter");
 		for (let letter of letters) {
 			letter.addEventListener('click', addLetter);
 		}
-
-	//Loads enter function onto the enter button on Keyboard
+		return letters;
+}
+//Adds event listener to backspace button and returns the button element, this is to make the event listeners testable
+function addBackspaceEventListener(){
+	let backspaceBtn = document.getElementById('backspace');
+	backspaceBtn.addEventListener('click', backspace);
+	return backspaceBtn;
+}
+//Adds event listener to enter button and returns the button element, this is to make the event listeners testable
+function addEnterEventListener(){
 	let enter = document.getElementById("enter");
 	enter.addEventListener('click', checkAnswer);
+	return enter;
 }
-
-//Exports for testing
-
-module.exports = { word, validWords, letters}
+module.exports = { word, validWords, letters, addLetterEventListener, addBackspaceEventListener, addEnterEventListener,}
