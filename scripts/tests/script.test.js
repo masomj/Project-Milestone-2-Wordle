@@ -12,7 +12,7 @@
     document.close()
 })
 
-const { word, validWords, addLetterEventListener,addBackspaceEventListener,addEnterEventListener } = require("../script");
+const { word, validWords, addLetterEventListener, incrementSelectedIndex } = require("../script");
 
  
 describe("Word is correctly selected", () => {
@@ -27,26 +27,19 @@ describe("Word is correctly selected", () => {
 });
 
 
-describe("Check game environment loads correctly", () => {
+describe("Check OnScreen Keyboard loads correctly", () => {
     test('All Letters are on the dom and event listener is correctly loaded', () => {
             let letters = addLetterEventListener();
             expect(letters.length).toEqual(26);
-          
-        
     })
-    test('Backspace button is on the dom and favicon code from font awseome is present', () => {
-           let backspace = addBackspaceEventListener();
-            expect(backspace.innerHTML).toEqual(`<i class="fas fa-backspace"></i>`);
+})
 
-            
-         
-    })
-    test('Enter button is on the dom and displays correct text', ()=>{
-        let enter = addEnterEventListener();
-        console.log(enter.innerHTML)
-        expect(enter.innerHTML).toEqual('Enter');
+describe("Ensure selected index is incremented when a letter is click",() =>{
+    test('selected index is incremented', () => {
+        selectedIndex = incrementSelectedIndex();
+        
+        expect(selectedIndex).toEqual(1);
     })
 
 })
-
 

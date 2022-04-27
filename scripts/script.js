@@ -199,7 +199,7 @@ function performBackspace(guessNumber) {
 	let indexes = document.getElementById(guessNumber).children;
 	guessedWord = guessedWord.slice(0, -1);
 	guessedLetters.pop();
-	indexes[selectedIndex].innerHTML = ` `;
+	indexes[selectedIndex].textContent = ` `;
 
 }
 
@@ -251,11 +251,17 @@ function addLetter(evnt) {
 				break;
 		}
 	}
+	
+	selectedIndex = incrementSelectedIndex();
+	console.log(selectedIndex)
+}
+//increment select index by 1, up to a limit of 5
+function incrementSelectedIndex() {
 	if (selectedIndex < 5) {
-		selectedIndex++;
-
+		 return selectedIndex + 1;
+	} else{
+		return selectedIndex;
 	}
-
 }
 //calls the game load function on dom load
 document.addEventListener('DOMContentLoaded', onDocLoad, false);
@@ -293,4 +299,4 @@ function addEnterEventListener(){
 	enter.addEventListener('click', checkAnswer);
 	return enter;
 }
-module.exports = { word, validWords, letters, addLetterEventListener, addBackspaceEventListener, addEnterEventListener,}
+module.exports = { word, validWords, letters, addLetterEventListener, incrementSelectedIndex, selectedIndex}
