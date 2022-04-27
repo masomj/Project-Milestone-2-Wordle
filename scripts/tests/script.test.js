@@ -12,7 +12,7 @@
     document.close()
 })
 
-const { word, validWords, addLetterEventListener, incrementSelectedIndex } = require("../script");
+const { word, validWords, addLetterEventListener, incrementSelectedIndex, decreaseSelectedIndex, } = require("../script");
 
  
 describe("Word is correctly selected", () => {
@@ -34,12 +34,19 @@ describe("Check OnScreen Keyboard loads correctly", () => {
     })
 })
 
-describe("Ensure selected index is incremented when a letter is click",() =>{
+describe("Ensure selected index is incremented and decreased when a letter is clicked",() =>{
     test('selected index is incremented', () => {
         selectedIndex = incrementSelectedIndex();
-        
         expect(selectedIndex).toEqual(1);
     })
+    test('selected index is decreased', () => {
+        selectedIndex = 1;
+        selectedIndex = decreaseSelectedIndex();
+        expect(selectedIndex).toEqual(0);
+    })
+
 
 })
+
+
 

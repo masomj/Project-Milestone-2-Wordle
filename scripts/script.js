@@ -205,9 +205,8 @@ function performBackspace(guessNumber) {
 
 //calls the function to remove the selected index from UI and array, depending on guess number
 function backspace() {
-	if (selectedIndex > 0) {
-		selectedIndex--;
-	}
+	selectedIndex = decreaseSelectedIndex();
+	
 	switch (guesses) {
 		case 1:
 			performBackspace("Guess1");
@@ -224,8 +223,16 @@ function backspace() {
 		case 5:
 			performBackspace("Guess5");
 			break;
-
-
+	}
+}
+//decrease the selected index by 1 
+function decreaseSelectedIndex(){
+	if (selectedIndex > 0) {
+		console.log(selectedIndex)
+		return selectedIndex - 1 ;
+		
+	} else {
+		return selectedIndex;
 	}
 }
 
@@ -253,7 +260,6 @@ function addLetter(evnt) {
 	}
 	
 	selectedIndex = incrementSelectedIndex();
-	console.log(selectedIndex)
 }
 //increment select index by 1, up to a limit of 5
 function incrementSelectedIndex() {
@@ -299,4 +305,4 @@ function addEnterEventListener(){
 	enter.addEventListener('click', checkAnswer);
 	return enter;
 }
-module.exports = { word, validWords, letters, addLetterEventListener, incrementSelectedIndex, selectedIndex}
+module.exports = { word, validWords, letters, addLetterEventListener, incrementSelectedIndex, selectedIndex, decreaseSelectedIndex, }
