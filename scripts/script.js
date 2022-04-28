@@ -269,6 +269,16 @@ function incrementSelectedIndex() {
 		return selectedIndex;
 	}
 }
+//Inctruction Pop up
+
+function displayInstructions(){
+	const wrapper = document.createElement("div");
+	
+}
+
+
+
+
 //calls the game load function on dom load
 document.addEventListener('DOMContentLoaded', onDocLoad, false);
 

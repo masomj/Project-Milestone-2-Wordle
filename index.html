@@ -11,7 +11,20 @@
 <body>
     <header>
         <h1 id="title">Wordle</h1>
-        
+            <div id="instruction-wrapper" class =>
+                <h3 id="instruction-title">How to play?</h3>
+                <div id="game-description">
+                    <p>Guess the WORDLE in five tries.</p>
+                    <p>Each guess must be a valid five-letter word. Hit the enter button to submit</p>
+                    <p>After each guess, the color of the tiles will change to show how close your guess was to the word.</p>
+                </div>
+                <div id ="game-instructions">
+                    <p>If a letter is green, it is in the word and in the correct spot.</p>
+                    <p>If a letter is orange, it is in the word but in the incorrect spot.</p>
+                    <p>If a letter is grey, it is not in the word in any spot.</p>
+                    <button id="play-button">Lets play!</button>
+                </div>
+            </div>
             <div id="popup-wrapper" class ="hide-popup">
                 <h2 id="popup-title"></h2>
                 <p id="popup-text"></p>
@@ -19,7 +32,7 @@
             </div>
    
     </header>
-    <main id ="main-game">
+    <main id ="main-game" class="blur"> 
         <div class="guess-wrapper">
             <div id="Guess1" class="guesses">
                 <div id="index1">

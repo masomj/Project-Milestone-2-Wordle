@@ -58,11 +58,22 @@ body{
     height:1rem;
     margin:auto auto;
 }
+#instruction-wrapper{
+    background-color:white;
+    padding:0.5rem;
+    border-radius:0.5rem;
+    width:fit-content;
+    margin:auto auto;
+}
+#game-instructions{
+    align-items: center;
+}
+#instruction-title{
+    text-align: center;
+}
 #keyboard-wrapper{
     margin:auto auto;
     width:100%;
-    position:fixed;
-    bottom:2rem;
 }
 .keyboard{
     text-align: center;
