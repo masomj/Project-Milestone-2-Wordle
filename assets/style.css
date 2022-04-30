@@ -58,6 +58,12 @@ body{
     height:1rem;
     margin:auto auto;
 }
+
+#play{
+    margin:auto auto;
+    display: flex;
+}
+
 #instruction-wrapper{
     background-color:white;
     padding:0.5rem;

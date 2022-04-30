@@ -16,16 +16,34 @@ const validWords = ["cigar", "rebut", "sissy", "humph", "awake", "blush", "focal
 //get random word
 function selectWord(validWords) {
 	let i = Math.floor(Math.random() * validWords.length);
-
 	return validWords[i].toUpperCase();
 }
 
-let word = selectWord(validWords); //The word to guess
 
+
+let word = selectWord(validWords); //The word to guess
+//Add event listener to the "lets play" button 
+
+function letsPlay (){
+	addGameEventListeners();
+	removeBlur('main-game');
+	hideInstructionWrapper();
+}
+
+function hideInstructionWrapper (){
+	let wrapper = document.getElementById('instruction-wrapper');
+	wrapper.classList.add('hide-popup');
+}
+
+function removeBlur(ElementId){
+	document.getElementById(ElementId).classList.remove("blur");
+}
 //to set up the game on start up
 function onDocLoad() {
-	addGameEventListeners();
+	addPlayEventListener();
+	
 }
+
 //shakes the selected guess
 function addShake() {
 	let indexes = document.getElementById(`Guess${guesses}`).children;
@@ -33,6 +51,7 @@ function addShake() {
 		indexes[i].classList.add('shake');
 	}
 }
+
 //removes shake class so it can be shaken again
 function removeShake() {
 	let indexes = document.getElementById(`Guess${guesses}`).children;
@@ -43,25 +62,24 @@ function removeShake() {
 }
 //changes color of keyboard button
 function alreadySelectedLetter(letter, color) {
-	
 	for (let i = 0; i < letters.length; i++) {
 
 		if (color === 'green') {
 			if (letters[i].textContent === String(letter)){
 				letters[i].style.backgroundColor = "green";
-				letters[i].style.border = "2px green solid"
+				letters[i].style.border = "2px green solid";
 					
 			}
 		}else if (color === 'orange') {
 			if (letters[i].textContent === String(letter)) {
 				letters[i].style.backgroundColor = "orange";
-				letters[i].style.border = "2px orange solid"
+				letters[i].style.border = "2px orange solid";
 				
 			}
 		}else if (color === 'gray') {
 			if (letters[i].textContent === String(letter)) {
 				letters[i].style.backgroundColor = "gray";
-				letters[i].style.border = "2px gray solid"
+				letters[i].style.border = "2px gray solid";
 			
 			}
 		}
@@ -94,12 +112,10 @@ function checkAnswer() {
 			}
 		} else {
 			invalidWord();
-
 		}
 	} else if (guesses >= 5) {
         changeColor('incorrect');
-		resultPopUp('incorrect')
-        
+		resultPopUp('incorrect');
 	}
 }
 
@@ -111,6 +127,7 @@ function removeListeners() {
 	}
 	enter.removeEventListener('click', checkAnswer);
 }
+
 //makes popup HTML visible to user 
 function displayPopup() {
 	let popupWrapper = document.getElementById("popup-wrapper");
@@ -124,6 +141,7 @@ function displayPopup() {
 	});
 	removeListeners();
 }
+
 //populates and displays popup at endgame
 function resultPopUp(result) {
 	popupContent(result);
@@ -149,6 +167,7 @@ function correctWord() {
 	resultPopUp('correct');
 	
 }
+
 //Calls the function to change the index color
 function incorrectWord() {
 	changeColor("incorrect");
@@ -156,12 +175,14 @@ function incorrectWord() {
 	clearVariables();
 
 }
+
 //used to reset the incrementation variables between guesses
 function clearVariables() {
 	selectedIndex = 0;
 	guessedLetters = [];
 	guessedWord = "";
 }
+
 //change the index color to green for correct place or yellow for contained in the word but not correct index
 function changeColor(result) {
 	let indexes = document.getElementById(`Guess${guesses}`).children;
@@ -187,6 +208,7 @@ function changeColor(result) {
 		}
 	}
 }
+
 //Adds the selected letter to the selected index and builds the guessed word
 function performAddLetter(guessNumber, letter) {
 	let indexes = document.getElementById(guessNumber).children;
@@ -194,6 +216,7 @@ function performAddLetter(guessNumber, letter) {
 	guessedWord += letter;
 	guessedLetters.push(letter);
 }
+
 //removes letter from letters array, guessed word string and the last selected index on the GUI
 function performBackspace(guessNumber) {
 	let indexes = document.getElementById(guessNumber).children;
@@ -225,6 +248,7 @@ function backspace() {
 			break;
 	}
 }
+
 //decrease the selected index by 1 
 function decreaseSelectedIndex(){
 	if (selectedIndex > 0) {
@@ -261,6 +285,7 @@ function addLetter(evnt) {
 	
 	selectedIndex = incrementSelectedIndex();
 }
+
 //increment select index by 1, up to a limit of 5
 function incrementSelectedIndex() {
 	if (selectedIndex < 5) {
@@ -269,31 +294,23 @@ function incrementSelectedIndex() {
 		return selectedIndex;
 	}
 }
-//Inctruction Pop up
-
-function displayInstructions(){
-	const wrapper = document.createElement("div");
-	
-}
-
-
-
 
 //calls the game load function on dom load
-document.addEventListener('DOMContentLoaded', onDocLoad, false);
+document.addEventListener('DOMContentLoaded', onDocLoad);
 
 //Adds event listeners to the keyboard buttons
 function addGameEventListeners(){
 	//loads backspace function on the backspace button on keyboard 
 	let BTNbackspace = addBackspaceEventListener();
-
+	
 	//loads click function onto every button on the keyboard
 	let letters = addLetterEventListener();
 
 	//Loads enter function onto the enter button on Keyboard
 	let enter = addEnterEventListener();
-}
 
+	removeBlur('main-game');
+}
 
 //Adds eventListenr to each letter and returns an array of the letters, this is to make the event listeners testable
 function addLetterEventListener(){
@@ -303,12 +320,18 @@ function addLetterEventListener(){
 		}
 		return letters;
 }
+//add event listener to lets Play button
+function addPlayEventListener(){
+	let btn = document.getElementById("play");
+	btn.addEventListener('click',letsPlay);
+}
 //Adds event listener to backspace button and returns the button element, this is to make the event listeners testable
 function addBackspaceEventListener(){
 	let backspaceBtn = document.getElementById('backspace');
 	backspaceBtn.addEventListener('click', backspace);
 	return backspaceBtn;
 }
+
 //Adds event listener to enter button and returns the button element, this is to make the event listeners testable
 function addEnterEventListener(){
 	let enter = document.getElementById("enter");
