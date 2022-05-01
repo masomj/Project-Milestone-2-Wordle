@@ -2,7 +2,7 @@ let selectedIndex = 0; //used to track what box the user is inputting a letter t
 let guesses = 1;
 let guessedWord = ""; //the user input word
 let guessedLetters = []; //used to iterate through the word
-let letters =[] //used to store all keyboard letters
+let letters =[]; //used to store all keyboard letters
 
 //All allowed guesses
 const fiveLetterWordList = [
@@ -19,11 +19,7 @@ function selectWord(validWords) {
 	return validWords[i].toUpperCase();
 }
 
-
-
 let word = selectWord(validWords); //The word to guess
-
-console.log(word)
 //Add event listener to the "lets play" button 
 
 function letsPlay (){
@@ -122,7 +118,7 @@ function checkAnswer() {
 				
 			} else if (guessedWord != word) {
 				incorrectWord();
-				resultPopUp('incorrect')
+				resultPopUp('incorrect');
 			}
 		} else {
 			invalidWord();
@@ -263,7 +259,7 @@ function backspace() {
 //decrease the selected index by 1 
 function decreaseSelectedIndex(){
 	if (selectedIndex > 0) {
-		console.log(selectedIndex)
+		
 		return selectedIndex - 1 ;
 		
 	} else {
@@ -312,7 +308,7 @@ document.addEventListener('DOMContentLoaded', onDocLoad);
 //Adds event listeners to the keyboard buttons
 function addGameEventListeners(){
 	//loads backspace function on the backspace button on keyboard 
-	let BTNbackspace = addBackspaceEventListener();
+	let backspaceBTN = addBackspaceEventListener();
 	
 	//loads click function onto every button on the keyboard
 	let letters = addLetterEventListener();
@@ -349,4 +345,4 @@ function addEnterEventListener(){
 	enter.addEventListener('click', checkAnswer);
 	return enter;
 }
-module.exports = { word, validWords, letters, addLetterEventListener, incrementSelectedIndex, selectedIndex, decreaseSelectedIndex, }
+module.exports = { word, validWords, letters, addLetterEventListener, incrementSelectedIndex, selectedIndex, decreaseSelectedIndex };
