@@ -1,6 +1,6 @@
 # Project-Milestone-2-Wordle
 Project Milestone 2 -  A browser based word guessing game
-![Am I Responsive screenshot](/docs/wordleAmIResponsive.png)
+![Am I Responsive screenshot](docs/wordleAmIResponsive.png)
 This game is a browser based word game. The concept comes from the game named "Wordle", now owned by the New York Times. I Created this game in native HTML5, CSS3 and Javascript. The aim of the game is to guess the five letter word, in five guesses. After each guess the user is informed, by a colour change, whether the letters they entered are contained in the word, and whether they are in the correct index. 
 
 The goal of this project was to display my skills in HTML, CSS and mainly Javascript by creating a complex game that is both visually appealing, fun to play and responsive across all browsers and display sizes. 
