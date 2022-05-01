@@ -48,14 +48,17 @@ The goal of this project was to display my skills in HTML, CSS and mainly Javasc
  ![Wordle Keyboard Area](docs/WordleKeyboard.png)
  ## The end game
  This pop up is created as empty HTML Elements and is hidden by default on page load. Then, the text is changed based on whether the user has won or lost.
- ![Wordle End Game Popup](docs/wordleendgame.png)
+ ![Wordle End Game Popup](docs/WordleEndgame.png)
  ## Invalid word
  The decision was made to use a browser alert to infrom the user if they enter an invalid word, as it requires the user's interaction before the game can continue, which can help avoid confusion around wether the word is valid. 
+ ![Wordle Invalid Word](docs/WordleInvalidWord.png)
 # Testing
-In order to ensure that I reach the largest audience, I had to ensure my game worked across multiple browser and screen types. In this section, I detail the manual testing I performed to ensure that this criteria was met. 
+In order to ensure that I reach the largest audience, I had to ensure my game worked across multiple browser and screen types. In this section, I detail the manual testing I performed to ensure that this criteria was met. Some of the manual testing was performed by members of my family. This teting was very useful as it pointed out several shortfalls and issues with the game.
+
+## Manual User Testing
+ - the first issue observed in the manual testing was that on smaller size displays, the keyboard was too small to use. To resolve this, I created a CSS media query and changed the size of the keyboard to be 320px wide in total.
+ - the next issue was that when you failed to guess the word, the popup would not display 
 ## Cross Browser testing
-###
- 
 ## Compatability Teting
 ## Responsiveness Testing
-## User Testing
+
