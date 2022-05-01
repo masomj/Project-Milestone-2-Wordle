@@ -11,7 +11,7 @@ The goal of this project was to display my skills in HTML, CSS and mainly Javasc
   - As a new user, I want to be able to play a word based game.
   - As a new user, I want to be able to enjoy playing the game without distractions like advertisements.
   - As a returning user, I want to be able to play this game more than once per day.
-  - As a returning user, I want to be able to track my previous progress in the game. 
+
 ## User Journey
   The user journey through the site is the same for all visitors. The landing page and main game is all on the same page. At the landing page, a popup displaying the games instructions teaches the user the requirements for winning and how to do so. Once they have begun playing the game, they are given visual feedback in the form of the colour changes to indicate whether they are progressing towards the correct word or not. In addition, the main game page is a simple yet effective screen, with little in the form of distracting elements. The title is the only non functional element on the screen. 
   
@@ -77,6 +77,16 @@ I wanted the game to have a casual feel to it, which is why I chose a background
  - I would like to create different difficulty levels, so have 7 letter words as a harder version of the game
 # Testing
 In order to ensure that I reach the largest audience, I had to ensure my game worked across multiple browser and screen types. In this section, I detail the manual testing I performed to ensure that this criteria was met. Some of the manual testing was performed by members of my family. This testing was very useful as it pointed out several shortfalls and issues with the game.
+## User Story Testing
+ > As a new user, I want to be able to be instructed on how to play a word based game.
+ - This is achieved by implementing an instruction manual when a user visits the site.
+> As a new user, I want to be able to play a word based game.
+- This is achieved by implementing a word based guessing game. 
+> As a new user, I want to be able to enjoy playing the game without distractions like advertisements.
+- This is achieved by keeping the dom free of unnecessary  items
+> As a returning user, I want to be able to play this game more than once per day. 
+- This is achieved as the game is re-playable. At the end game, the user is prompted to play again,, with a different word choice. 
+
 ## Code Validation
 ### HTML
 The W3 Schools Validator errored on duplicate Ids and some empty headings.
@@ -121,10 +131,10 @@ The testing criteria was:
    - Does the end game popup on the conditions of either win or lose?
 
 All four of browsers I tested (firefox, Chrome, Edge and Brave) all passed the above testing criteria, below are screenshots of all the browsers passing the first test criteria.  
-![Screenshot of game on firefox](docs/wordleFirefox.png)
-![Screenshot of game on brave](docs/wordleBrave.png)
-![Screenshot of game on edge](docs/wordleEdge.png)
-![screenshot of game chrome](docs/wordleChrome.png)
+[Screenshot of game on firefox](docs/wordleFirefox.png)
+[Screenshot of game on brave](docs/wordleBrave.png)
+[Screenshot of game on edge](docs/wordleEdge.png)
+[screenshot of game chrome](docs/wordleChrome.png)
 
 ## Deployment
 ### Local Deployment 
