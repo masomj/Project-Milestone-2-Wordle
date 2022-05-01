@@ -22,6 +22,8 @@ function selectWord(validWords) {
 
 
 let word = selectWord(validWords); //The word to guess
+
+console.log(word)
 //Add event listener to the "lets play" button 
 
 function letsPlay (){
@@ -29,12 +31,12 @@ function letsPlay (){
 	removeBlur('main-game');
 	hideInstructionWrapper();
 }
-
+//hides the intruction wrapper
 function hideInstructionWrapper (){
 	let wrapper = document.getElementById('instruction-wrapper');
 	wrapper.classList.add('hide-popup');
 }
-
+//takes element id as paramenter and removes the class blur
 function removeBlur(ElementId){
 	document.getElementById(ElementId).classList.remove("blur");
 }
@@ -101,7 +103,7 @@ function invalidWord() {
 function checkAnswer() {
 	let allWords = validWords.concat(fiveLetterWordList);
 	let lowerCaseWord = guessedWord.toLowerCase();
-	if (guesses <= 5) {
+	if (guesses < 5) {
 		if (allWords.includes(lowerCaseWord)) {
 			if (guessedWord === word) {
 				correctWord();
@@ -114,8 +116,17 @@ function checkAnswer() {
 			invalidWord();
 		}
 	} else if (guesses >= 5) {
-        changeColor('incorrect');
-		resultPopUp('incorrect');
+		if (allWords.includes(lowerCaseWord)) {
+			if (guessedWord === word) {
+				correctWord();
+				
+			} else if (guessedWord != word) {
+				incorrectWord();
+				resultPopUp('incorrect')
+			}
+		} else {
+			invalidWord();
+		}
 	}
 }
 
